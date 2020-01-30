@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  height: 120vh;
 }
 
 textarea{
@@ -10,7 +11,9 @@ textarea{
   resize: none;
   color: #000000;
   border-left: 1px solid black;
-  padding: 10px;
+  padding: 0px;
+  height: 70px;
+  width: 100%;
 }
 
 .jumbotron {
@@ -68,4 +71,33 @@ textarea{
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+.tes {
+  border: solid 1px red;
+}
+
+.test2 {
+  background-color: royalblue;
+  border-bottom: 1px solid black;
+  border-radius: 0 15px 15px 0;
+  transition: .7s;
+  right: 3px;
+}
+
+.test2:hover {
+  background-color: blue;
+}
+
+.day {
+  text-align: right;
+}
+
+img {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  right: 40%;
+  top: 33%;
+  
 }

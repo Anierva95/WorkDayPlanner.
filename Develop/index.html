@@ -29,10 +29,201 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <!-- Timeblocks go here -->
+      <div class="form-row">
+          <div class="col-lg-2 day">
+            9AM
+          </div>
+          <div class="col-lg-8 test">
+            <textarea class="timeArea" id="9"></textarea>
+          </div>
+          <div class="col-lg-1 test2" id="9btn">
+            <img src="../Assets/iconfinder_102_111044.png">
+          </div> 
+      </div>
+      <div class="form-row">
+        <div class="col-lg-2 day">
+          10AM
+        </div>
+        <div class="col-lg-8 test">
+          <textarea class="timeArea" id="10"></textarea>
+        </div>
+        <div class="col-lg-1 test2" id="10btn">
+          <img src="../Assets/iconfinder_102_111044.png">
+        </div> 
+    </div>
+    <div class="form-row">
+      <div class="col-lg-2 day">
+        11AM
+      </div>
+      <div class="col-lg-8 test">
+        <textarea class="timeArea" id="11"></textarea>
+      </div>
+      <div class="col-lg-1 test2" id="11btn">
+        <img src="../Assets/iconfinder_102_111044.png">
+      </div> 
+  </div>
+  <div class="form-row">
+    <div class="col-lg-2 day">
+      12PM
+    </div>
+    <div class="col-lg-8 test">
+      <textarea class="timeArea" id="12"></textarea>
+    </div>
+    <div class="col-lg-1 test2" id="12btn">
+      <img src="../Assets/iconfinder_102_111044.png">
+    </div> 
+</div>
+<div class="form-row">
+  <div class="col-lg-2 day">
+    1PM
+  </div>
+  <div class="col-lg-8 test">
+    <textarea class="timeArea" id="13"=></textarea>
+  </div>
+  <div class="col-lg-1 test2" id="13btn">
+    <img src="../Assets/iconfinder_102_111044.png">
+  </div> 
+</div>
+<div class="form-row">
+  <div class="col-lg-2 day">
+    2PM
+  </div>
+  <div class="col-lg-8 test">
+    <textarea class="timeArea" id="14"></textarea>
+  </div>
+  <div class="col-lg-1 test2" id="14btn">
+    <img src="../Assets/iconfinder_102_111044.png">
+  </div> 
+</div>
+<div class="form-row">
+  <div class="col-lg-2 day">
+    3PM
+  </div>
+  <div class="col-lg-8 test">
+    <textarea class="timeArea" id="15"></textarea>
+  </div>
+  <div class="col-lg-1 test2" id="15btn">
+    <img src="../Assets/iconfinder_102_111044.png">
+  </div> 
+</div>
+<div class="form-row">
+  <div class="col-lg-2 day">
+    4PM
+  </div>
+  <div class="col-lg-8 test">
+    <textarea class="timeArea" id="16"></textarea>
+  </div>
+  <div class="col-lg-1 test2" id="16btn">
+    <img src="../Assets/iconfinder_102_111044.png">
+  </div> 
+</div>
+<div class="form-row">
+  <div class="col-lg-2 day">
+    5PM
+  </div>
+  <div class="col-lg-8 test">
+    <textarea class="timeArea" id="17"></textarea>
+  </div>
+  <div class="col-lg-1 test2" id="17btn">
+    <img src="../Assets/iconfinder_102_111044.png">
+  </div> 
+</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+    // Setting the current Day on top of screen
+    $("#currentDay").text(moment().format('MMMM Do, YYYY'));
+
+    // Select each TextArea
+     var nineAM = $('#9');
+     var tenAM = $('#10');
+     var elevenAM = $('#11');
+     var noon = $('#12');
+     var onePM = $('#13');
+     var twoPM = $('#14');
+     var threePM= $('#15');
+     var fourPM = $('#16');
+     var fivePM = $('#17');
+
+    // Create array to iterate through each textarea
+     blocks = [nineAM, tenAM, elevenAM, noon, onePM, twoPM, threePM, fourPM, fivePM];
+
+     // Iterate through blocks array
+     for (var i = 0; i < blocks.length; i++) {
+
+      // The value of the block to compare
+      var hourBlockValue = parseInt(blocks[i].attr("id"));
+
+      // Current time of day
+      var currentTime = moment().hour();
+
+      // Compare each block to the current time of day and change accordingly
+       if (hourBlockValue < currentTime) {
+         blocks[i].addClass('past');
+       } else if (hourBlockValue === currentTime) {
+         blocks[i].addClass('present');
+       } else {
+         blocks[i].addClass('future');
+       }
+     }
+     
+    // Selecting save buttons
+     var nineAMbtn = $('#9btn');
+     var tenAMbtn = $('#10btn');
+     var elevenAMbtn = $('#11btn');
+     var noonbtn = $('#12btn');
+     var onePMbtn = $('#13btn');
+     var twoPMbtn = $('#14btn');
+     var threePMbtn= $('#15btn');
+     var fourPMbtn = $('#16btn');
+     var fivePMbtn = $('#17btn');
+
+     // Save corresponding text area based on which button is clicked
+
+     nineAMbtn.click(function () {
+      localStorage.setItem('nineAM', nineAM.val());
+     });
+      tenAMbtn.click(function () {
+      localStorage.setItem('tenAM', tenAM.val());
+     });
+     elevenAMbtn.click(function () {
+      localStorage.setItem('elevenAM', elevenAM.val());
+     });
+     noonbtn.click(function () {
+      localStorage.setItem('noon', noon.val());
+     });
+     onePMbtn.click(function () {
+      localStorage.setItem('onePM', onePM.val());
+     });
+     twoPMbtn.click(function () {
+      localStorage.setItem('twoPM', twoPM.val());
+     });
+     threePMbtn.click(function () {
+      localStorage.setItem('threePM', threePM.val());
+     });
+     fourPMbtn.click(function () {
+      localStorage.setItem('fourPM', fourPM.val());
+     });
+     fivePMbtn.click(function () {
+      localStorage.setItem('fivePM', fivePM.val());
+     });
+     
+     // Grab information from storage when page is loaded up
+     nineAM.text(localStorage.getItem('nineAM'));
+     tenAM.text(localStorage.getItem('tenAM'));
+     elevenAM.text(localStorage.getItem('elevenAM'));
+     noon.text(localStorage.getItem('noon'));
+     onePM.text(localStorage.getItem('onePM'));
+     twoPM.text(localStorage.getItem('twoPM'));
+     threePM.text(localStorage.getItem('threePM'));
+     fourPM.text(localStorage.getItem('fourPM'));
+     fivePM.text(localStorage.getItem('fivePM'));
+
+    
+    
+    
+    </script>
   </body>
 </html>
